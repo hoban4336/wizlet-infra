@@ -1,0 +1,96 @@
+# serviceAccounts:
+#   tempo:
+#     create: true
+
+# tempo:
+#   enabled: true
+
+#   distributor:
+#     service:
+#       type: NodePort
+#       ports:
+#         http-metrics:
+#           port: 3100
+#           targetPort: http-metrics
+#           nodePort: 31119
+#         grpc:
+#           port: 9095
+#           targetPort: grpc
+#           nodePort: 31715
+#         distributor-otlp-http:
+#           port: 4318
+#           targetPort: distributor-otlp-http
+#           nodePort: 32601
+#         distributor-otlp:
+#           port: 4317
+#           targetPort: distributor-otlp
+#           nodePort: 31984
+#         distributor-otlp-legacy:
+#           port: 55680
+#           targetPort: distributor-otlp-legacy
+#           nodePort: 31053
+
+#   queryFrontend:
+#     service:
+#       type: NodePort
+#       ports:
+#         http:
+#           port: 3100
+#           targetPort: http
+#           nodePort: 32413
+#         grpc:
+#           port: 9095
+#           targetPort: grpc
+#           nodePort: 31734
+
+#   ingester:
+#     service:
+#       type: ClusterIP
+#   compactor:
+#     service:
+#       type: ClusterIP
+#   memcached:
+#     service:
+#       type: ClusterIP
+#   querier:
+#     service:
+#       type: ClusterIP
+#   metricsGenerator:
+#     service:
+#       type: ClusterIP
+
+distributor:
+  service:
+    type: NodePort
+    ports:
+      - name: http-metrics
+        port: 3100
+        targetPort: 3100
+        nodePort: 31119
+      - name: grpc
+        port: 9095
+        targetPort: 9095
+        nodePort: 31175
+
+queryFrontend:
+  service:
+    type: NodePort
+    ports:
+      - name: http-metrics
+        port: 3100
+        targetPort: 3100
+        nodePort: 32413
+      - name: grpc
+        port: 9095
+        targetPort: 9095
+        nodePort: 31734
+
+traces:
+  otlp:
+    grpc:
+      enabled: true
+    http:
+      enabled: true
+
+metricsGenerator:
+  enabled: true
