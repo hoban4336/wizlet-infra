@@ -1,6 +1,6 @@
 # Load environment variables from .env file
 include .env
-export
+export PATH := /usr/local/bin:$(PATH)
 
 .PHONY: help
 help: ## show help message
@@ -8,7 +8,7 @@ help: ## show help message
 
 
 .PHONY: deploy_keel
-deploy_keel: ## https://ghdwlsgur.github.io/docs/Kubernetes/k8s_keel
+deploy_keel: ## https://keel.sh/docs/#environment-variables
 	@helm repo add keel https://charts.keel.sh; \
 	helm repo update; \
 	helm upgrade --install keel keel/keel \
