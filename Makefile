@@ -1,6 +1,6 @@
 # Load environment variables from .env file
 include .env
-export PATH := /usr/local/bin:$(PATH)
+export PATH := /snap/bin:$(PATH)
 
 .PHONY: help
 help: ## show help message
